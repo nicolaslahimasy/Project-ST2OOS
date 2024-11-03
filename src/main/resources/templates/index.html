@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<body>
+<header>
+    <h1>Bienvenue sur la Page d'Accueil</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/about">À Propos</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <a th:href="@{/orders}">Voir les commandes</a>
+        </ul>
+    </nav>
+</header>
+<main>
+    <p>Ceci est la page d'accueil de votre application. Explorez le contenu et amusez-vous !</p>
+</main>
+<footer>
+    <p>&copy; 2024 Mon Application</p>
+</footer>
+</body>
+</html>

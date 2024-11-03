@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'com.google.protobuf' version '0.9.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.grpc:grpc-netty-shaded:1.44.0'
+    implementation 'io.grpc:grpc-protobuf:1.44.0'
+    implementation 'io.grpc:grpc-stub:1.44.0'
+    implementation 'com.google.protobuf:protobuf-java:3.19.1' // Protobuf runtime
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.19.1'
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.44.0'
+        }
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                java {} // Génère les classes Java pour les messages Protobuf (OrderRequest, OrderResponse)
+            }
+            task.plugins {
+                grpc {} // Génère les classes gRPC (OrderServiceGrpc)
+            }
+        }
+    }
+}
+sourceSets {
+    main {
+        java {
+            srcDirs += '../build/generated/source/proto/main/java'
+            srcDirs += '../build/generated/source/proto/main/grpc'
+        }
+    }
+}
+
+
+
+sourceCompatibility = '17' // ou votre version de Java

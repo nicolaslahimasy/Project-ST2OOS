@@ -1,0 +1,2 @@
+rootProject.name = 'Project-ST2OOS'
+include 'restservice', 'rpcservice'

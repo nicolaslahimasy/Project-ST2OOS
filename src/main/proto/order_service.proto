@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.example.Project_ST2OOS.rpcservice.proto";
+
+service OrderService {
+  rpc GetOrder (OrderRequest) returns (OrderResponse);
+  rpc CreateOrder (OrderRequest) returns (OrderResponse);
+}
+
+message OrderRequest {
+  int64 id = 1;
+  string description = 2;
+}
+
+message OrderResponse {
+  int64 id = 1;
+  string description = 2;
+}
